@@ -1,0 +1,60 @@
+paths:
+  raw_train: "data/raw/train.csv"
+  raw_later: "data/raw/later.csv"
+  holdout_features: "data/raw/holdout_features.csv"
+  cleaned_train: "data/processed/train_clean.csv"
+  model_path: "models/model.joblib"
+  predictions_path: "predictions/holdout_predictions.csv"
+  findings_path: "reports/findings.yaml"
+
+data:
+  target_col: "resale_thousand_rs"
+  leaking_col: "final_price_from_rc_transfer"
+  numeric_features:
+    - "age_years"
+    - "km_driven"
+    - "engine_cc"
+    - "owners"
+    - "service_records"
+    - "accidents"
+  categorical_features:
+    - "brand_tier"
+    - "city_zone"
+  unit_fix:
+    column: "km_driven"
+    zone: "South"
+    factor: 0.001
+  sentinel:
+    column: "service_records"
+    value: -1
+  stuck_sensor:
+    column: "owners"
+    start_date: "2026-02-10"
+    end_date: "2026-02-23"
+  brand_aliases:
+    "bud.": "budget"
+    "pre.": "premium"
+    "mid.": "mid"
+
+mlflow:
+  tracking_uri: "sqlite:///mlflow.db"
+  experiment_name: "mp047-used-bike-price"
+  registered_model_name: "mp047-bike-price-model"
+
+training:
+  random_state: 42
+  cv_folds: 5
+  ridge_alphas: [0.1, 1.0, 10.0]
+  rf_n_estimators: 100
+  rf_max_depth: 12
+  gbr_n_estimators: 150
+  gbr_learning_rate: 0.08
+  gbr_max_depth: 3
+
+monitoring:
+  psi_bins: 10
+  retrain_train_fraction: 0.70
+  promotion_min_improvement: 0.08
+  v2_n_estimators: 200
+  v2_learning_rate: 0.05
+  v2_max_depth: 3

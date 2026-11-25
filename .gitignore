@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+
+# MLflow artifact folders (mlflow.db is committed)
+mlruns/
+mlartifacts/
+
+# Derived processed data
+data/processed/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
