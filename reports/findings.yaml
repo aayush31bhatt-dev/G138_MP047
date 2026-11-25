@@ -41,22 +41,22 @@ tracking:
   experiment_name: "mp047-used-bike-price"
   best_run_id: "08655d95a57c46c4ace4eeedfb7709c4"  # the MLflow run id of your v1 model
   registered_model_name: "mp047-bike-price-model"
-  champion_version: 1
+  champion_version: 2
 
 monitoring:
   psi:                     # cleaned train.csv vs later.csv, 10 bins
-    age_years: null
-    km_driven: null
-    engine_cc: null
-    owners: null
-    service_records: null
-    accidents: null
-  most_drifted_feature: null
+    age_years: 5.4985
+    km_driven: 0.0199
+    engine_cc: 0.0508
+    owners: 0.0001
+    service_records: 0.0759
+    accidents: 0.0197
+  most_drifted_feature: "age_years"
   mae_by_group:            # v1 on later.csv, per value of city_zone
-    'North': null
-    'South': null
-    'Central': null
-  worst_served_group: null
-  mae_v1_on_check: null    # v1 on the last 30% of later.csv (by date)
-  mae_v2_on_check: null    # v2 on the same rows
-  decision: null           # promote or keep
+    'North': 16.5066
+    'South': 11.1195
+    'Central': 11.7433
+  worst_served_group: "North"
+  mae_v1_on_check: 13.5703  # v1 on the last 30% of later.csv (by date)
+  mae_v2_on_check: 8.387    # v2 on the same rows
+  decision: "promote"       # promote or keep
