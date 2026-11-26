@@ -97,7 +97,7 @@ def predict(features: BikeFeatures) -> PredictionResponse:
         extra={
             "event": "predict",
             "prediction": prediction,
-            "latency_ms": latency_ms,
+            "latency__ms": latency_ms,
         },
     )
     return PredictionResponse(prediction=prediction)
